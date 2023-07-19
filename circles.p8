@@ -3,13 +3,14 @@ version 41
 __lua__
 function _init()
  r=9
+ offset=3
  clr=12
  life=15
  
  // number of circles per row
  n_circs_row=flr(128/(r*2))
  // how much shrink per frame
- shrink_amount=r/life
+ shrink_amount=(r+offset)/life
  
  circles={}
 end
@@ -44,7 +45,7 @@ function generate_circles()
   
  for i=1,n_circs_row^2 do
   add(circles,{
-   r=r,
+   r=r+offset,
    clr=clr,
    life=life,
    x=col+r,

@@ -3,7 +3,7 @@ version 41
 __lua__
 function _init()
  r=10
- clr=14
+ clr=12
  life=10
  draw=false
  
@@ -17,7 +17,7 @@ end
 
 
 function _draw()
- cls()
+ cls(1)
  
  if draw then
  	for i=1,#circles do

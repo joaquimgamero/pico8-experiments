@@ -6,51 +6,28 @@ function _init()
  clr=12
  life=15
  
- -- number of circles per row
+ // number of circles per row
  n_circs_row=flr(128/(r*2))
- n_circs=n_circs_row^2
+ // how much shrink per frame
  shrink_amount=r/life
  
  circles={}
 end
 
-
-
 function _draw()
  cls(1)
  
- if #circles > 0 then
-  for c in all(circles) do
-   circfill(c.x,c.y,c.r,c.clr)
-  end
- end
+ foreach(circles, function(c)
+   circfill(c.x, c.y, c.r, c.clr)
+ end)
 end
 
-
-
 function _update()
- if btn(❎) and #circles==0 then
-  local row=1
-  local col=1
-  
-  for i=1,n_circs do
-   add(circles,{
-    r=r,
-    clr=clr,
-    life=life,
-    x=col+r,
-    y=row+r,
-   })
-   
-   col+=r*2
-   
-   if col+r*2 >= 128 then
-   	col=1
-   	row+=r*2
-   end
-  end
+ if btn(❎) then
+  generate_circles()
  end
  
+ -- update circles
  for circle in all(circles) do
   if circle.life>0 then
    circle.r-=shrink_amount
@@ -61,6 +38,28 @@ function _update()
  end
 end
 
+function generate_circles()
+ local row=1
+ local col=1
+  
+ for i=1,n_circs_row^2 do
+  add(circles,{
+   r=r,
+   clr=clr,
+   life=life,
+   x=col+r,
+   y=row+r,
+  })
+  
+  col+=r*2
+   
+  -- change to next row
+  if col+r*2 >= 128 then
+  	col=1
+  	row+=r*2
+  end
+ end
+end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000

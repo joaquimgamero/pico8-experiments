@@ -7,9 +7,9 @@ function _init()
  clr=12
  life=15
  
- // number of circles per row
+ -- number of circles per row
  n_circs_row=flr(128/(r*2))
- // how much shrink per frame
+ -- how much shrink per frame
  shrink_amount=(r+offset)/life
  
  circles={}
@@ -24,7 +24,8 @@ function _draw()
 end
 
 function _update()
- if btn(❎) then
+ -- press x
+ if btn(5) then
   generate_circles()
  end
  
@@ -61,6 +62,7 @@ function generate_circles()
   end
  end
 end
+
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000

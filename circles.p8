@@ -13,29 +13,37 @@ function _init()
  shrink_amount=(r+offset)/life
  
  circles={}
+ generate_circles()
 end
 
 function _draw()
  cls(1)
  
  foreach(circles, function(c)
-   circfill(c.x, c.y, c.r, c.clr)
+   if c.delay <= 0 then
+    circfill(c.x, c.y, c.r, c.clr)
+   end
  end)
 end
 
 function _update()
- -- press x
+ -- if x button is pressed, regenerate the circles
  if btn(5) then
+  circles={}
   generate_circles()
  end
  
  -- update circles
  for circle in all(circles) do
-  if circle.life>0 then
-   circle.r-=shrink_amount
-   circle.life-=1
+  if circle.delay <= 0 then
+   if circle.life>0 then
+    circle.r-=shrink_amount
+    circle.life-=1
+   else
+    del(circles,circle)
+   end
   else
-   del(circles,circle)
+   circle.delay+=1
   end
  end
 end
@@ -43,6 +51,8 @@ end
 function generate_circles()
  local row=1
  local col=1
+ -- delay before a circle starts shrinking
+ local delay=0
   
  for i=1,n_circs_row^2 do
   add(circles,{
@@ -51,9 +61,11 @@ function generate_circles()
    life=life,
    x=col+r,
    y=row+r,
+   delay=delay,
   })
   
   col+=r*2
+  delay+=1 -- increment the delay for each subsequent circle
    
   -- change to next row
   if col+r*2 >= 128 then

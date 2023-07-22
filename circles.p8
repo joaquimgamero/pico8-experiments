@@ -43,7 +43,7 @@ function _update()
     del(circles,circle)
    end
   else
-   circle.delay+=1
+   circle.delay-=1
   end
  end
 end

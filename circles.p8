@@ -4,7 +4,7 @@ __lua__
 function _init()
  r=9
  offset=3
- clr=12
+ clr=8
  life=15
  
  -- number of circles per row
@@ -17,7 +17,7 @@ function _init()
 end
 
 function _draw()
- cls(1)
+ cls(10)
  
  foreach(circles, function(c)
    if c.delay <= 0 then
@@ -65,7 +65,7 @@ function generate_circles()
   })
   
   col+=r*2
-  delay+=1 -- increment the delay for each subsequent circle
+  delay+=0.5 -- increment the delay for each subsequent circle
    
   -- change to next row
   if col+r*2 >= 128 then

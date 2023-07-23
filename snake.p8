@@ -11,7 +11,7 @@ function _init()
 	 y=64,
 	 dx=0,
 	 dy=0,
-	 acc=0.4,
+	 acc=0.5,
 	}
 end
 
@@ -24,17 +24,19 @@ function _update()
  if (btn(⬆️)) snk.dy-=snk.acc
  if (btn(⬇️)) snk.dy+=snk.acc
 	
+	-- add speed
 	snk.x+=snk.dx
 	snk.y+=snk.dy
 	
+	-- relax using friction
 	snk.dx*=friction
 	snk.dy*=friction
 end
 
 function _draw()
-	cls()
+	cls(8)
 	
-	circfill(snk.x,snk.y,3,8)
+	circfill(snk.x,snk.y,3,10)
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000

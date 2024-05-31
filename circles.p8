@@ -27,9 +27,9 @@ function _draw()
 end
 
 function _update()
- -- if x button is pressed, regenerate the circles
+ -- if x button is pressed,
+ -- start updating circles
  if btnp(5) then
-  circles={}
   generate_circles()
  end
  

@@ -7,3 +7,6 @@ A couple cartridges trying to explore PICO-8's capabilities
   - add different animation paces?
 - 💡 a small pong
 - 💡 a dvd bouncing word
+- 💡 a fireworks generator (particle system)
+- 💡 camera follows a sprite
+  

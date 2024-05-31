@@ -1,5 +1,5 @@
 pico-8 cartridge // http://www.pico-8.com
-version 41
+version 42
 __lua__
 function _init()
  r=9
@@ -28,7 +28,7 @@ end
 
 function _update()
  -- if x button is pressed, regenerate the circles
- if btn(5) then
+ if btnp(5) then
   circles={}
   generate_circles()
  end

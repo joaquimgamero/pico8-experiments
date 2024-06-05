@@ -5,7 +5,7 @@ function _init()
  
 	snk={
 		{
-			 x=64,
+		  x=64,
 		  y=64,
 		  dx=0,
 		  dy=0,
